@@ -19,6 +19,10 @@ def compare_genders():
 def average_age():
     avg_age = df['Age'].mean()
     print(f"The average age of the fans is: {avg_age:.2f}")
+def most_fans_country():
+    country_counts = df['Country'].value_counts()
+    most_fans = country_counts.idxmax()
+    print(f"The country with the most fans attending is: {most_fans}")
 
 def get_survey_data():
     """
@@ -39,6 +43,8 @@ try:
             compare_genders()
         elif question_number == 2:
             average_age()
+        elif question_number == 3:
+            most_fans_country()
         else:
             print("Invalid question number. Please enter a number between 1 and 8.")
 except ValueError:
