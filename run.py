@@ -11,11 +11,14 @@ worksheet = SHEET.get_worksheet(0)
 records = worksheet.get_all_records()
 df = pd.DataFrame(records)
 
+
 # Define functions for each question
 def compare_genders():
     gender_counts = df['Gender'].value_counts()
     print(f"Number of females: {gender_counts.get('Female', 0)}")
     print(f"Number of males: {gender_counts.get('Male', 0)}")
+    print(f"Number of non-binary: {gender_counts.get('Non-binary', 0)}")
+    print(f"Number of other: {gender_counts.get('Other', 0)}")
 def average_age():
     avg_age = df['Age'].mean()
     print(f"The average age of the fans is: {avg_age:.2f}")
@@ -23,10 +26,22 @@ def most_fans_country():
     country_counts = df['Country'].value_counts()
     most_fans = country_counts.idxmax()
     print(f"The country with the most fans attending is: {most_fans}")
+def favorite_album():
+    fav_album_counts = df['Favourite Album'].value_counts()
+    fav_album = fav_album_counts.idxmax()
+    print(f"The favourite album of the fans is: {fav_album}")
+def favorite_album():
+    fav_album_counts = df['Favourite Album'].value_counts()
+    fav_album = fav_album_counts.idxmax()
+    print(f"The favourite album of the fans is: {fav_album}")
+def favorite_song():
+    fav_song_counts = df['Favourite Song'].value_counts()
+    fav_song = fav_song_counts.idxmax()
 
+# Main function to get user input and call the appropriate function
 def get_survey_data():
     """
-    Get survey data from the google sheet / taylorswift_erastour.
+    Get survey data from the Google Sheet / taylorswift_erastour.
     """
     print("Find out more from our Eras Tour Survey\n")
     print("1. How many females compared to males were there?")
@@ -34,10 +49,8 @@ def get_survey_data():
     print("3. What country had the most fans attending?")
     print("4. What was the favourite album of the fans?")
     print("5. What was the favourite song from the fans?")
-    print("6. What was the lowest inputted favourite song and album?")
-    print("7. What was the average age of 'Reputation' fans?")
-    print("8. What was the majority gender for fans of 'Lover'? \n")
-try:
+
+    try:
         question_number = int(input("Enter your question number here: "))
         if question_number == 1:
             compare_genders()
@@ -45,9 +58,13 @@ try:
             average_age()
         elif question_number == 3:
             most_fans_country()
+        elif question_number == 4:
+            favorite_album()
+        elif question_number == 5:
+            favorite_song()
         else:
             print("Invalid question number. Please enter a number between 1 and 8.")
-except ValueError:
+    except ValueError:
         print("Invalid input. Please enter a number between 1 and 8.")
 
 # Run the main function
