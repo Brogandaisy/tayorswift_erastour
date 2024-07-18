@@ -2,7 +2,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
 
-# Set up Google Sheets API credentials and access
+# Allow for Google Sheets and API credentials access
 SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 CREDS = Credentials.from_service_account_file('creds.json', scopes=SCOPE)
 CLIENT = gspread.authorize(CREDS)
@@ -24,19 +24,26 @@ def compare_genders():
     print(f"Number of males: {gender_counts.get('Male', 0)}")
     print(f"Number of non-binary: {gender_counts.get('Non-binary', 0)}")
     print(f"Numbe6r of other: {gender_counts.get('Other', 0)}")
+
+
 """
 Calculates the average age of the fans from the survey data
 """
 def average_age():
     avg_age = df['Age'].mean()
-    print(f"The average age of the fans is: {avg_age:.2f}")
+    avg_age_rounded = round(avg_age)  # Round avg_age to the nearest whole number(intg)
+    print(f"The average age of the fans is: {avg_age_rounded}")
+
+
 """
-Calculates the majority country of the fans from the survey data
+Calculates the majority home country of the fans from the survey data
 """
 def most_fans_country():
     country_counts = df['Country'].value_counts()
     most_fans = country_counts.idxmax()
     print(f"The country with the most fans attending is: {most_fans}")
+
+
 """
 Calculates the highest favourite album response from the survey data
 """
@@ -44,6 +51,8 @@ def favorite_album():
     fav_album_counts = df['Favourite Album'].value_counts()
     fav_album = fav_album_counts.idxmax()
     print(f"The favourite album of the fans is: {fav_album}")
+
+
 """
 Calculates the highest favourite song response from the survey data
 """
@@ -52,6 +61,8 @@ def favorite_song():
     
     fav_song = fav_song_counts.idxmax()
     print(f"The favourite song of the fans is: {fav_song}")
+
+
 """
 Calculates album stats from each album from the survey data, including average age, gender and country
 """
@@ -73,10 +84,15 @@ def album_stats(album):
     print(f" - Most common gender: {most_common_gender}")
     print(f" - Country with most fans: {most_common_country}")
 
+
+
 # Main function to get user input and call the appropriate function
 def get_survey_data():
     """
     Prints the questions to the user, so they can select a number relating to each one
+    Question number 6 uses an enumerate to display a secondary question
+    If an incorrect number entered an error message will appear
+    Enter '0' to exit the questions
     """
     while True:
         print("\nFind out more from our Eras Tour Survey\n")
