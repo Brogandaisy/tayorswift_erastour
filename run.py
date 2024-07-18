@@ -1,17 +1,17 @@
 import gspread
-from oauth2client.service_account import Credentials
+from google.oauth2.service_account import Credentials
 import pandas as pd
 
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
+# Set up Google Sheets API credentials and access
+SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+CREDS = Credentials.from_service_account_file('creds.json', scopes=SCOPE)
+CLIENT = gspread.authorize(CREDS)
 
-CREDS = Credentials.from_service_account_file('creds.json')
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('taylorswift_erastour')
+# Access your Google Sheet
+SHEET = CLIENT.open('taylorswift_erastour')
+worksheet = SHEET.get_worksheet(0)
+records = worksheet.get_all_records()
+df = pd.DataFrame(records)
 
 
 # Defined functions for each question
@@ -23,7 +23,7 @@ def compare_genders():
     print(f"Number of females: {gender_counts.get('Female', 0)}")
     print(f"Number of males: {gender_counts.get('Male', 0)}")
     print(f"Number of non-binary: {gender_counts.get('Non-binary', 0)}")
-    print(f"Number of other: {gender_counts.get('Other', 0)}")
+    print(f"Numbe6r of other: {gender_counts.get('Other', 0)}")
 """
 Calculates the average age of the fans from the survey data
 """
@@ -49,10 +49,6 @@ Calculates the highest favourite song response from the survey data
 """
 def favorite_song():
     fav_song_counts = df['Favourite Song'].value_counts()
-    print(f"Debug: fav_song_counts =\n{fav_song_counts}")  # Debug print
-    if fav_song_counts.empty:
-        print("No favorite song data available.")
-        return
     
     fav_song = fav_song_counts.idxmax()
     print(f"The favourite song of the fans is: {fav_song}")
@@ -105,7 +101,7 @@ def get_survey_data():
             elif question_number == 5:
                 favorite_song()
             elif question_number == 6:
-                albums = ["1989", "Evermore", "Fearless", "Folklore", "Lover", "Midnights", "Red", "Reputation"]
+                albums = ["Speak Now", "Evermore", "Fearless", "Folklore", "Lover", "Midnights", "Red", "Reputation"]
                 print("\nChoose your album from the list:")
                 for counter, album in enumerate(albums):
                     print(f"{counter + 1}. {album}")
