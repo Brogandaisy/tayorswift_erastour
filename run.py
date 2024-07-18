@@ -47,7 +47,13 @@ Calculates the highest favourite song response from the survey data
 """
 def favorite_song():
     fav_song_counts = df['Favourite Song'].value_counts()
+    print(f"Debug: fav_song_counts =\n{fav_song_counts}")  # Debug print
+    if fav_song_counts.empty:
+        print("No favorite song data available.")
+        return
+    
     fav_song = fav_song_counts.idxmax()
+    print(f"The favourite song of the fans is: {fav_song}")
 """
 Calculates album stats from each album from the survey data, including average age, gender and country
 """
