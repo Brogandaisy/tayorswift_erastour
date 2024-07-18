@@ -4,7 +4,7 @@ import pandas as pd
 
 # Set up Google Sheets API credentials and access
 SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-CREDS = ServiceAccountCredentials.from_json_keyfile_name('/workspace/tayorswift_erastour/creds.json', SCOPE)
+CREDS = ServiceAccountCredentials.from_json_keyfile_name('/workspace/tayorswift_erastour/creds.json')
 CLIENT = gspread.authorize(CREDS)
 SHEET = CLIENT.open('taylorswift_erastour')
 worksheet = SHEET.get_worksheet(0)
