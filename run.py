@@ -91,7 +91,7 @@ def get_survey_data():
         print("0. Exit")
 
         try:
-            question_number = int(input("Enter your question number here: "))
+            question_number = int(input("Enter your question number here: \n"))
             if question_number == 1:
                 compare_genders()
             elif question_number == 2:
