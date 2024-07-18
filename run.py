@@ -48,7 +48,26 @@ Calculates the highest favourite song response from the survey data
 def favorite_song():
     fav_song_counts = df['Favourite Song'].value_counts()
     fav_song = fav_song_counts.idxmax()
-
+"""
+Calculates album stats from each album from the survey data, including average age, gender and country
+"""
+def album_stats(album):
+    album_fans = df[df['Favourite Album'] == album]
+    if album_fans.empty:
+        print(f"No data available for the album '{album}'")
+        return
+    
+    avg_age_album = album_fans['Age'].mean()
+    gender_counts_album = album_fans['Gender'].value_counts()
+    country_counts_album = album_fans['Country'].value_counts()
+    
+    most_common_gender = gender_counts_album.idxmax()
+    most_common_country = country_counts_album.idxmax()
+    
+    print(f"Statistics for '{album}' fans:")
+    print(f" - Average age: {avg_age_album:.2f}")
+    print(f" - Most common gender: {most_common_gender}")
+    print(f" - Country with most fans: {most_common_country}")
 
 # Main function to get user input and call the appropriate function
 def get_survey_data():
@@ -61,6 +80,7 @@ def get_survey_data():
     print("3. What country had the most fans attending?")
     print("4. What was the favourite album of the fans?")
     print("5. What was the favourite song from the fans?")
+    print("6. Get detailed statistics for a specific album")
 
     try:
         question_number = int(input("Enter your question number here: "))
@@ -74,16 +94,21 @@ def get_survey_data():
             favorite_album()
         elif question_number == 5:
             favorite_song()
-        elif 9 <= question_number < 9 + len(albums):
-            album = albums[question_number - 9]
-            avg_age_album_fans(album)
-        elif question_number == 9 + len(albums):
-            album = input("Enter the album name: ")
-            album_stats(album)
+        elif question_number == 6:
+            albums = ["1989", "Evermore", "Fearless", "Folklore", "Lover", "Midnights", "Red", "Reputation"]
+            print("\nChoose your album from the list:")
+            for counter, album in enumerate(albums):
+                print(f"{counter + 1}. {album}")
+            album_number = int(input("Enter the number matching to the album of your choice: "))
+            if 1 <= album_number <= len(albums):
+                album = albums[album_number - 1]
+                album_stats(album)
+            else:
+                print("Invalid album number.")
         else:
-            print("Invalid question number. Please enter a number between 1 and")
+            print("Invalid question number. Please enter a number between 1 and 6.")
     except ValueError:
-        print("Invalid input. Please enter a number between 1 and 8")
+        print("Invalid input. Please enter a valid number.")
 
 # Run the main function
 get_survey_data()
