@@ -12,31 +12,43 @@ records = worksheet.get_all_records()
 df = pd.DataFrame(records)
 
 
-# Define functions for each question
+# Defined functions for each question
+"""
+Counts the different genders from the survey data
+"""
 def compare_genders():
     gender_counts = df['Gender'].value_counts()
     print(f"Number of females: {gender_counts.get('Female', 0)}")
     print(f"Number of males: {gender_counts.get('Male', 0)}")
     print(f"Number of non-binary: {gender_counts.get('Non-binary', 0)}")
     print(f"Number of other: {gender_counts.get('Other', 0)}")
+"""
+Calculates the average age of the fans from the survey data
+"""
 def average_age():
     avg_age = df['Age'].mean()
     print(f"The average age of the fans is: {avg_age:.2f}")
+"""
+Calculates the majority country of the fans from the survey data
+"""
 def most_fans_country():
     country_counts = df['Country'].value_counts()
     most_fans = country_counts.idxmax()
     print(f"The country with the most fans attending is: {most_fans}")
+"""
+Calculates the highest favourite album response from the survey data
+"""
 def favorite_album():
     fav_album_counts = df['Favourite Album'].value_counts()
     fav_album = fav_album_counts.idxmax()
     print(f"The favourite album of the fans is: {fav_album}")
-def favorite_album():
-    fav_album_counts = df['Favourite Album'].value_counts()
-    fav_album = fav_album_counts.idxmax()
-    print(f"The favourite album of the fans is: {fav_album}")
+"""
+Calculates the highest favourite song response from the survey data
+"""
 def favorite_song():
     fav_song_counts = df['Favourite Song'].value_counts()
     fav_song = fav_song_counts.idxmax()
+
 
 # Main function to get user input and call the appropriate function
 def get_survey_data():
@@ -62,10 +74,16 @@ def get_survey_data():
             favorite_album()
         elif question_number == 5:
             favorite_song()
+        elif 9 <= question_number < 9 + len(albums):
+            album = albums[question_number - 9]
+            avg_age_album_fans(album)
+        elif question_number == 9 + len(albums):
+            album = input("Enter the album name: ")
+            album_stats(album)
         else:
-            print("Invalid question number. Please enter a number between 1 and 8.")
+            print("Invalid question number. Please enter a number between 1 and")
     except ValueError:
-        print("Invalid input. Please enter a number between 1 and 8.")
+        print("Invalid input. Please enter a number between 1 and 8")
 
 # Run the main function
 get_survey_data()
