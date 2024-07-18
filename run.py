@@ -2,14 +2,16 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 
-# Set up Google Sheets API credentials and access
-SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-CREDS = ServiceAccountCredentials.from_json_keyfile_name('/workspace/tayorswift_erastour/creds.json')
-CLIENT = gspread.authorize(CREDS)
-SHEET = CLIENT.open('taylorswift_erastour')
-worksheet = SHEET.get_worksheet(0)
-records = worksheet.get_all_records()
-df = pd.DataFrame(records)
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open('taylorswift_erastour')
 
 
 # Defined functions for each question
