@@ -14,7 +14,7 @@ This project is analysing the data found in a google sheet from a survey asked t
 - Favourite Taylor Swift Song
 - Favourite Taylor Swift Album
 
-![Google Sheet Data](/workspace/tayorswift_erastour/assets/images/ts.googlesheet.png)
+![Google Sheet Data](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts.googlesheet.png)
 
 With the data collected in a google sheet, I used the following python code to create a program for users to quickly get select types of data fast from the survey. 
 Including:
@@ -26,6 +26,8 @@ Including:
 - Most requested favourite song
 
 I then also included the following data about the fans depending on their favourite album. For example, if you wanted to know the average age and most common gender of fans whose favourite album is 'Red'.
+
+![App Display](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts_app_display1.png)
 
 # Features
 
@@ -60,6 +62,8 @@ The code used for this is an if/elif statement, with an equals == to the number 
                 favorite_album()
             elif question_number == 5:
                 favorite_song()
+
+![Number Question System](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts_app_display2.png)
 
 For question 6, it is a little different. As I wanted the user to be asked a second question so they can select their chosen album using the number system. Instead of allowing the user to input the album as a string, which could allow mistakes to be made (spelling, capitalization errors, or an album not listed in the survey). Using a list and number system allowed the user to get the correct data for their chosen album.
 
