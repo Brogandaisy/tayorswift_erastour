@@ -129,7 +129,7 @@ def get_survey_data():
                 print("\nChoose your album from the list:")
                 for counter, album in enumerate(albums):
                     print(f"{counter + 1}. {album}")
-                album_number = int(input("Enter the number corresponding to your album: "))
+                album_number = int(input("Enter the album number: "))
                 if 1 <= album_number <= len(albums):
                     album = albums[album_number - 1]
                     album_stats(album)
