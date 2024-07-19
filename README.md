@@ -14,7 +14,7 @@ This project is analysing the data found in a google sheet from a survey asked t
 - Favourite Taylor Swift Song
 - Favourite Taylor Swift Album
 
-![Google Sheet Data](/workspace/tayorswift_erastour/assets/images/ts.googlesheet.png)
+![Google Sheet Data](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts.googlesheet.png)
 
 With the data collected in a google sheet, I used the following python code to create a program for users to quickly get select types of data fast from the survey. 
 Including:
@@ -26,6 +26,8 @@ Including:
 - Most requested favourite song
 
 I then also included the following data about the fans depending on their favourite album. For example, if you wanted to know the average age and most common gender of fans whose favourite album is 'Red'.
+
+
 
 # Features
 
