@@ -63,9 +63,13 @@ The code used for this is an if/elif statement, with an equals == to the number 
             elif question_number == 5:
                 favorite_song()
 
-![Number Question System](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts_app_display2.png)
+![Number Question System](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts.app.display6.png)
 
 For question 6, it is a little different. As I wanted the user to be asked a second question so they can select their chosen album using the number system. Instead of allowing the user to input the album as a string, which could allow mistakes to be made (spelling, capitalization errors, or an album not listed in the survey). Using a list and number system allowed the user to get the correct data for their chosen album.
+
+![Question 6, Secondary Question](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts_app_display3.png)
+
+![Question 6, Answer Display](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts_app_display4.png)
 
 ## While Loop
 The program includes a 'while loop', which repeats the question input box after their answer has been processed. There is also an exit function to the loop, using the same easy to use number system, '0' to exit. 
@@ -113,6 +117,14 @@ To test the functionality of the program I used the following systems:
 - pep8ci.herokuapp.com / Which checks for any errors in my python code
 - Heroku / App deployment, testing the user experience
 
+Testing included typing in the correct requirements for each question multiple times to show it provides the right data each time, but equally testing incorrect data entry, for example: using a number which was not listed. See image below, when answering the album list with '0' it returned an error message, which shows the code is working.
+
+I also tried using incorrect formats such as string/words which displayed the correct error message also.
+
+When testing on pep8, the errors returned were line character maximums and function spacing errors. This was updated and tested again.
+
+![Testing](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts_app_display5.png)
+
 # Bugs
 Whilst working on my program, and with each new function, I was consistently checking for bugs and errors. The following errors appeared as I wrote:
 
@@ -127,6 +139,8 @@ Whilst checking these at each stage of the project I was able to correct my erro
 No bugs remain in the project, all functions working well.
 
 # Deployment
+
+![Heroku App Deployment](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts_heroku.png)
 
 # References
 I used the following resources to complete this project.
