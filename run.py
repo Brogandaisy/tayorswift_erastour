@@ -28,10 +28,11 @@ def compare_genders():
 
 """
 Calculates the average age of the fans from the survey data
+Rounds the age to the nearest whole number
 """
 def average_age():
     avg_age = df['Age'].mean()
-    avg_age_rounded = round(avg_age)  # Round avg_age to the nearest whole number(intg)
+    avg_age_rounded = round(avg_age)  # Round avg_age to the nearest whole number(integer)
     print(f"The average age of the fans is: {avg_age_rounded}")
 
 
@@ -71,7 +72,7 @@ def album_stats(album):
     if album_fans.empty:
         print(f"No data available for the album '{album}'")
         return
-    
+    # Calcuates the following existing functions for each album selected
     avg_age_album = album_fans['Age'].mean()
     gender_counts_album = album_fans['Gender'].value_counts()
     country_counts_album = album_fans['Country'].value_counts()
@@ -79,7 +80,8 @@ def album_stats(album):
     most_common_gender = gender_counts_album.idxmax()
     most_common_country = country_counts_album.idxmax()
     
-    print(f"Statistics for '{album}' fans:")
+    # Printed text for the user on each album
+    print(f"Data for '{album}' fans:")
     print(f" - Average age: {avg_age_album:.2f}")
     print(f" - Most common gender: {most_common_gender}")
     print(f" - Country with most fans: {most_common_country}")
