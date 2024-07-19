@@ -1,11 +1,11 @@
 # Taylor Swift Eras Tour Survey Data
 Project 3 - Brogan Carpenter
 
-[View Live Project](https://brogandaisy.github.io/Plant-Water-Fire/)
+[View Live Project]()
 
 # About the Project
 
-This project is analysing the data found in a survey created for fans who attended one of the Eras Tour shows by Taylor Swift. The survey asked 150 fans the following questions:
+This project is analysing the data found in a google sheet from a survey asked to fans who attended one of the Eras Tour shows by Taylor Swift. The survey asked 150 fans the following questions:
 
 - Name
 - Age
@@ -14,7 +14,9 @@ This project is analysing the data found in a survey created for fans who attend
 - Favourite Taylor Swift Song
 - Favourite Taylor Swift Album
 
-With this data collected, I used the following python code to create a program for users to quickly get select types of data fast from the survey. 
+![Google Sheet Data](/workspace/tayorswift_erastour/assets/images/ts_googlesheet.png)
+
+With the data collected in a google sheet, I used the following python code to create a program for users to quickly get select types of data fast from the survey. 
 Including:
 
 - Average age of fans attending
@@ -121,6 +123,14 @@ Whilst checking these at each stage of the project I was able to correct my erro
 No bugs remain in the project, all functions working well.
 
 # Deployment
+
+# References
+I used the following resources to complete this project.
+
+- W3Schools for pandas library explanation, and how to include an enumerate function
+- Love Sandwiches walk through project for deployment, and googlesheet import/connection
+
+Author - Brogan Carpenter
 
 
 
