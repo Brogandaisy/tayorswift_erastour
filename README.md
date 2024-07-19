@@ -59,7 +59,75 @@ The code used for this is an if/elif statement, with an equals == to the number 
             elif question_number == 5:
                 favorite_song()
 
-For question 6, it is a little different. As I wanted the user to be asked a second question so they can select their chosen album. Instead of allowing the user to input the album as a string, which could allow mistakes to be made (spelling, c
+For question 6, it is a little different. As I wanted the user to be asked a second question so they can select their chosen album using the number system. Instead of allowing the user to input the album as a string, which could allow mistakes to be made (spelling, capitalization errors, or an album not listed in the survey). Using a list and number system allowed the user to get the correct data for their chosen album.
+
+## While Loop
+The program includes a 'while loop', which repeats the question input box after their answer has been processed. There is also an exit function to the loop, using the same easy to use number system, '0' to exit. 
+
+    while True:
+        print("\nFind out more from our Eras Tour Survey\n")
+        print("1. How many females compared to males were there?")
+        print("2. What is the average age of the fans?")
+        print("3. What country had the most fans attending?")
+        print("4. What was the favourite album of the fans?")
+        print("5. What was the favourite song from the fans?")
+        print("6. Get detailed statistics for a specific album")
+        print("0. Exit")
+
+    elif question_number == 0:
+                print("Exiting the survey.")
+                break
+## Pandas Install / Data Frames
+
+I installed the Pandas library to my program for the following reasons:
+
+- Easy to read data for the user, using lists
+- Enhanced performance, reading data faster and more efficiently
+- Multiple data frames and methods in an easy to read way
+
+      import pandas as pd
+      df = pd.DataFrame(records)
+
+      def average_age():
+          avg_age = df['Age'].mean()
+          avg_age_rounded = round(avg_age)  # Round avg_age to the nearest whole number(intg)
+          print(f"The average age of the fans is: {avg_age_rounded}")
+
+## Floating Point Number to Integer Number
+When asking for the average age of the fans, the original function displayed a a floating point number, with a decimal, for example: Average age 30.62. This wasn't the most readable for the end user. I added the following code to change the answer to a round number, which roudned the answer to the nearest whole number. For example: Average age 31.
+
+    def average_age():
+        avg_age = df['Age'].mean()
+        avg_age_rounded = round(avg_age)  # Round avg_age to the nearest whole number(intg)
+        print(f"The average age of the fans is: {avg_age_rounded}")
+
+# Testing
+To test the functionality of the program I used the following systems:
+
+- pep8ci.herokuapp.com / Which checks for any errors in my python code
+- Heroku / App deployment, testing the user experience
+
+# Bugs
+Whilst working on my program, and with each new function, I was consistently checking for bugs and errors. The following errors appeared as I wrote:
+
+- Indent errors, where code had been written with an incorrect indent, not allowing the code to be called/read
+- Spacing errors between functions
+- The wrong function name was displayed, not allowing the correct function to be called
+- Error messages displaying disconnects to the 'gspread', 'google.oauth2.service_account' and 'Credentials' when deploying
+- Average age displaying a decimal number
+
+Whilst checking these at each stage of the project I was able to correct my errors as I worked, without losing track of each working function. I tested each function by using 'python3 run.py' and answering the question as the user. 
+
+No bugs remain in the project, all functions working well.
+
+# Deployment
+
+
+
+  
+  
+    
+  
 
 
 
