@@ -3,7 +3,8 @@ from google.oauth2.service_account import Credentials
 import pandas as pd
 
 # Allow for Google Sheets and API credentials access
-SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+SCOPE = ["https://spreadsheets.google.com/feeds",
+         "https://www.googleapis.com/auth/drive"]
 CREDS = Credentials.from_service_account_file('creds.json', scopes=SCOPE)
 CLIENT = gspread.authorize(CREDS)
 
@@ -15,10 +16,10 @@ df = pd.DataFrame(records)
 
 
 # Defined functions for each question
-"""
-Counts the different genders from the survey data
-"""
 def compare_genders():
+    """
+    Counts the different genders from the survey data
+    """
     gender_counts = df['Gender'].value_counts()
     print(f"Number of females: {gender_counts.get('Female', 0)}")
     print(f"Number of males: {gender_counts.get('Male', 0)}")
@@ -26,48 +27,49 @@ def compare_genders():
     print(f"Numbe6r of other: {gender_counts.get('Other', 0)}")
 
 
-"""
-Calculates the average age of the fans from the survey data
-Rounds the age to the nearest whole number
-"""
 def average_age():
+    """
+    Calculates the average age of the fans from the survey data
+    Rounds the age to the nearest whole number
+    """
     avg_age = df['Age'].mean()
-    avg_age_rounded = round(avg_age)  # Round avg_age to the nearest whole number(integer)
+    # Round avg_age to the nearest whole number(integer)
+    avg_age_rounded = round(avg_age)
     print(f"The average age of the fans is: {avg_age_rounded}")
 
 
-"""
-Calculates the majority home country of the fans from the survey data
-"""
 def most_fans_country():
+    """
+    Calculates the majority home country of the fans from the survey data
+    """
     country_counts = df['Country'].value_counts()
     most_fans = country_counts.idxmax()
     print(f"The country with the most fans attending is: {most_fans}")
 
 
-"""
-Calculates the highest favourite album response from the survey data
-"""
 def favorite_album():
+    """
+    Calculates the highest favourite album response from the survey data
+    """
     fav_album_counts = df['Favourite Album'].value_counts()
     fav_album = fav_album_counts.idxmax()
     print(f"The favourite album of the fans is: {fav_album}")
 
 
-"""
-Calculates the highest favourite song response from the survey data
-"""
 def favorite_song():
+    """
+    Calculates the highest favourite song response from the survey data
+    """
     fav_song_counts = df['Favourite Song'].value_counts()
-    
     fav_song = fav_song_counts.idxmax()
     print(f"The favourite song of the fans is: {fav_song}")
 
 
-"""
-Calculates album stats from each album from the survey data, including average age, gender and country
-"""
 def album_stats(album):
+    """
+    Calculates album stats from each album from the survey data,
+    including average age, gender and country
+    """
     album_fans = df[df['Favourite Album'] == album]
     if album_fans.empty:
         print(f"No data available for the album '{album}'")
@@ -76,10 +78,9 @@ def album_stats(album):
     avg_age_album = album_fans['Age'].mean()
     gender_counts_album = album_fans['Gender'].value_counts()
     country_counts_album = album_fans['Country'].value_counts()
-    
     most_common_gender = gender_counts_album.idxmax()
     most_common_country = country_counts_album.idxmax()
-    
+
     # Printed text for the user on each album
     print(f"Data for '{album}' fans:")
     print(f" - Average age: {avg_age_album:.2f}")
@@ -87,13 +88,11 @@ def album_stats(album):
     print(f" - Country with most fans: {most_common_country}")
 
 
-
-# Main function to get user input and call the appropriate function
 def get_survey_data():
     """
-    Prints the questions to the user, so they can select a number relating to each one
-    Question number 6 uses an enumerate to display a secondary question
-    If an incorrect number entered an error message will appear
+    Prints the questions to the user, so they can select a number relating to
+    each one Question number 6 uses an enumerate to display a secondary
+    question If an incorrect number entered an error message will appear
     Enter '0' to exit the questions
     """
     while True:
@@ -119,7 +118,14 @@ def get_survey_data():
             elif question_number == 5:
                 favorite_song()
             elif question_number == 6:
-                albums = ["Speak Now", "Evermore", "Fearless", "Folklore", "Lover", "Midnights", "Red", "Reputation"]
+                albums = ["Speak Now",
+                          "Evermore",
+                          "Fearless",
+                          "Folklore",
+                          "Lover",
+                          "Midnights",
+                          "Red",
+                          "Reputation"]
                 print("\nChoose your album from the list:")
                 for counter, album in enumerate(albums):
                     print(f"{counter + 1}. {album}")
@@ -133,9 +139,10 @@ def get_survey_data():
                 print("Exiting the survey.")
                 break
             else:
-                print("Invalid question number. Please enter a number between 1 and 6.")
+                print("Invalid question number. Please enter between 1 and 6.")
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+
 # Run the main function
-get_survey_data() 
+get_survey_data()
