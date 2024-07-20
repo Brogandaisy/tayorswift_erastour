@@ -69,9 +69,48 @@ The code used for this is an if/elif statement, with an equals == to the number 
 
 For question 6, it is a little different. As I wanted the user to be asked a second question so they can select their chosen album using the number system. Instead of allowing the user to input the album as a string, which could allow mistakes to be made (spelling, capitalization errors, or an album not listed in the survey). Using a list and number system allowed the user to get the correct data for their chosen album.
 
+This was created using an enumerate and counter function.
+
+            elif question_number == 6:
+                albums = ["Speak Now",
+                          "Evermore",
+                          "Fearless",
+                          "Folklore",
+                          "Lover",
+                          "Midnights",
+                          "Red",
+                          "Reputation"]
+                print("\nChoose your album from the list:")
+                for counter, album in enumerate(albums):
+                    print(f"{counter + 1}. {album}")
+                album_number = int(input("Enter the album number: "))
+                if 1 <= album_number <= len(albums):
+                    album = albums[album_number - 1]
+                    album_stats(album)
+
+The enumerate creates the list of albums, and the counter provides the new range of numbers. Allowing the user to again, choose their number relating to the album choice. Using the function this way creates a good user experience.
+
+Once the album number had been chosen, it calls the 'album_stats' function, which calls the requested functions (which have been created in previous functions):
+
+            avg_age_album = album_fans['Age'].mean()
+                gender_counts_album = album_fans['Gender'].value_counts()
+                country_counts_album = album_fans['Country'].value_counts()
+                most_common_gender = gender_counts_album.idxmax()
+                most_common_country = country_counts_album.idxmax()
+
 ![Question 6, Secondary Question](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts_app_display3.png)
 
 ![Question 6, Answer Display](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/ts_app_display4.png)
+
+## Question Functions / Using google sheet data
+
+        def favorite_song():
+            fav_song_counts = df['Favourite Song'].value_counts()
+            fav_song = fav_song_counts.idxmax()
+            print(f"The favourite song of the fans is: {fav_song}")
+An example of one of the functions used to pull data from the google sheet. This was question 5, 'What is the favourite song from the fans?'
+
+This function counts the favourite song column data from the google sheet, (idxmax()) and then displays the data with the highest count.
 
 ## While Loop
 The program includes a 'while loop', which repeats the question input box after their answer has been processed. There is also an exit function to the loop, using the same easy to use number system, '0' to exit. 
@@ -90,24 +129,6 @@ The program includes a 'while loop', which repeats the question input box after 
                 print("Exiting the survey.")
                 break
 
-## Enumerate / Counter
-
-            elif question_number == 6:
-                albums = ["Speak Now",
-                          "Evermore",
-                          "Fearless",
-                          "Folklore",
-                          "Lover",
-                          "Midnights",
-                          "Red",
-                          "Reputation"]
-                print("\nChoose your album from the list:")
-                for counter, album in enumerate(albums):
-                    print(f"{counter + 1}. {album}")
-                album_number = int(input("Enter the album number: "))
-                if 1 <= album_number <= len(albums):
-                    album = albums[album_number - 1]
-                    album_stats(album)
 ## Pandas Install / Data Frames
 
 I installed the Pandas library to my program for the following reasons:
@@ -218,7 +239,7 @@ Once you have this connected, and you have commited your latest edits to github,
 # References
 I used the following resources to complete this project.
 
-- W3Schools for pandas library explanation, and how to include an enumerate function
+- W3Schools for pandas library explanation, and how to include an enumerate function, and 
 - Love Sandwiches walk through project for deployment, and googlesheet import/connection
 
 Author - Brogan Carpenter
