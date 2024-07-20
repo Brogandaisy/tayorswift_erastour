@@ -76,6 +76,7 @@ def album_stats(album):
         return
     # Calcuates the following existing functions for each album selected
     avg_age_album = album_fans['Age'].mean()
+    avg_age_album_rounded = round(avg_age_album)
     gender_counts_album = album_fans['Gender'].value_counts()
     country_counts_album = album_fans['Country'].value_counts()
     most_common_gender = gender_counts_album.idxmax()
@@ -83,7 +84,7 @@ def album_stats(album):
 
     # Printed text for the user on each album
     print(f"Data for '{album}' fans:")
-    print(f" - Average age: {avg_age_album:.2f}")
+    print(f" - Average age: {avg_age_album_rounded}")
     print(f" - Most common gender: {most_common_gender}")
     print(f" - Country with most fans: {most_common_country}")
 
