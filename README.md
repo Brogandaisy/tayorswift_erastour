@@ -263,7 +263,7 @@ Once you have this connected, and you have commited your latest edits to github,
 # References
 I used the following resources to complete this project.
 
-- W3Schools for pandas library explanation, and how to include an enumerate function, and 
+- W3Schools for pandas library explanation, and how to include an enumerate function, and how to round the age to the nearest whole number
 - Love Sandwiches walk through project for deployment, and googlesheet import/connection
 
 Author - Brogan Carpenter
