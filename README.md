@@ -1,7 +1,15 @@
 # Taylor Swift Eras Tour Survey Data
 Project 3 - Brogan Carpenter
 
-[View Live Project]()
+[View Live Project](https://taylorswift-erastour-0edb3552fd4f.herokuapp.com/)
+
+1. [About the Project](#about-the-project)
+2. [Features](#features)
+3. [Testing](#testing)
+4. [Bugs](#bugs)
+5. [Validator Testing](#validator-testing)
+6. [Deployment](#deployment)
+7. [References](#references)
 
 # About the Project
 
@@ -153,6 +161,21 @@ When asking for the average age of the fans, the original function displayed a a
         avg_age_rounded = round(avg_age)  # Round avg_age to the nearest whole number(intg)
         print(f"The average age of the fans is: {avg_age_rounded}")
 
+I also added this function to the album_stats function.
+    
+    avg_age_album = album_fans['Age'].mean()
+        avg_age_album_rounded = round(avg_age_album)
+        gender_counts_album = album_fans['Gender'].value_counts()
+        country_counts_album = album_fans['Country'].value_counts()
+        most_common_gender = gender_counts_album.idxmax()
+        most_common_country = country_counts_album.idxmax()
+
+        # Printed text for the user on each album
+        print(f"Data for '{album}' fans:")
+        print(f" - Average age: {avg_age_album_rounded}")
+        print(f" - Most common gender: {most_common_gender}")
+        print(f" - Country with most fans: {most_common_country}")
+
 # Testing
 To test the functionality of the program I used the following systems:
 
@@ -218,6 +241,7 @@ No bugs remain in the project, all functions working well.
 
 PEP8 Test Returns Clear.
 
+![Pep8 test clear](https://github.com/Brogandaisy/tayorswift_erastour/blob/main/assets/images/pep8.errorclear.png)
 
 # Deployment
 This project was deployed using Heroku. My code had been written using gitpod, and committed to github. I used the template repository from Code Institute.
